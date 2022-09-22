@@ -1,0 +1,99 @@
+<div class="pb-100">
+    <app-nav-bar> </app-nav-bar>
+</div>
+
+
+<section class="section1">
+
+<section class="ptb-100">
+    <div class="container">
+       <div class="row align-items-center ">
+        <h1>Your Current Rank Pro</h1>
+        <p>When you get the pro rank , all you need to do is keep your AR,and overall>=4.8
+            Less Than 4.8 can drop you to pro to semi again
+        </p>
+           <h1 class="ptb-100">STATS</h1>
+           <div class="matches-tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-matches-tab" data-bs-toggle="tab" data-bs-target="#all-matches" type="button" role="tab" aria-controls="all-matches" aria-selected="true">AR for the day</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="upcoming-matches-tab" data-bs-toggle="tab" data-bs-target="#upcoming-matches" type="button" role="tab" aria-controls="upcoming-matches" aria-selected="true">AR for last week</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="latest-result-tab" data-bs-toggle="tab" data-bs-target="#latest-result" type="button" role="tab" aria-controls="latest-result" aria-selected="true">AR for last year</button>
+                </li>
+               
+            </ul>
+        </div>    
+            <div class="col-lg-12 col-md-12 border ">
+                <h2 >AR for the day</h2>
+               <div class="contact-info">
+                <canvas baseChart
+                 [data]="barChartData"
+                 [options]="barChartOptions"
+                 [plugins]="barChartPlugins"
+                 [legend]="barChartLegend"
+                 [type]="'bar'">
+                </canvas>
+               </div>
+           </div>
+        </div>
+   </div>
+</section>
+
+<section class="ptb-100">
+    <div class="container">
+       <div class="row align-items-center ">
+        <h1>One hour average monthly calculator</h1>
+       
+           <h1 class="ptb-100">STATS</h1>
+            <div class="col-lg-12 col-md-12 border ">
+
+               <div class="contact-info">
+               <h3>Your one month average per hour =0</h3>
+               </div>
+           </div>
+        </div>
+   </div>
+</section>
+
+<section class="ptb-100">
+    <div class="container">
+       <div class="row align-items-center ">
+        <h1>Achievements</h1>
+           <h1 class="ptb-100">STATS</h1>
+           <div class="matches-tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-matches-tab" data-bs-toggle="tab" data-bs-target="#all-matches" type="button" role="tab" aria-controls="all-matches" aria-selected="true">  Day</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="upcoming-matches-tab" data-bs-toggle="tab" data-bs-target="#upcoming-matches" type="button" role="tab" aria-controls="upcoming-matches" aria-selected="true"> Week</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="latest-result-tab" data-bs-toggle="tab" data-bs-target="#latest-result" type="button" role="tab" aria-controls="latest-result" aria-selected="true">Year</button>
+                </li>
+               
+            </ul>
+        </div>    
+            <div class="col-lg-12 col-md-12 border ">
+                <p>Are granted by the clients when they give feedback</p>
+               <div class="contact-info">
+                <canvas baseChart
+                 [data]="barChartData"
+                 [options]="barChartOptions"
+                 [plugins]="barChartPlugins"
+                 [legend]="barChartLegend"
+                 [type]="'bar'">
+                </canvas>
+               </div>
+           </div>
+        </div>
+   </div>
+</section>
+</section>
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>

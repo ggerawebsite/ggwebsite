@@ -1,0 +1,31 @@
+<!-- <app-nav-bar></app-nav-bar> -->
+<app-nav-bar></app-nav-bar>
+<section class="page-title-area page-title-bg1">
+    <div class="container">
+        <div class="page-title-content">
+            <h1 >Under Construction</h1>
+        </div>
+    </div>
+</section>
+
+<section class="error-area ptb-100">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="error-content">
+                    <!-- <img src="assets/img/error.png" alt="image"> -->
+                    <h3>Under Construction</h3>
+                    <p>The page you are looking for will be available shortly.</p>
+                    <a routerLink="/pro-home" class="default-btn" *ngIf="!_auth.isNormal()" >Go to Homepage</a>
+                    <a routerLink="/home-page" class="default-btn" *ngIf="_auth.isNormal()" >Go to Homepage</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-area bg-1b060a ptb-70">
+<app-new-footer></app-new-footer>
+
+</footer>

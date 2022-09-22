@@ -1,0 +1,71 @@
+<div class="ptb-100">
+    <app-nav-bar> </app-nav-bar>
+</div>
+
+<div class="container pt-5 ">
+        <div class="row" style="background-color: rgb(39, 37, 37);border-radius: 25px;">
+            <div class="col-md-3 text-center">
+                <h1 class="text-center pt-5 pb-5" >Balance: $0</h1>
+            </div>
+            <div class="col-md-6 text-center justify-content-center">
+                <button type="button" class="btn btn-secondary mt-5 mb-5" style="font-size:30px;width:100px;">$50<br><p style="font-size: 15px;">&nbsp;</p></button>&nbsp;
+                <button type="button" class="btn btn-secondary mt-5 mb-5" style="font-size:30px;">$100<br><p style="font-size: 15px;">+$10 bonus</p></button>&nbsp;
+                <button type="button" class="btn btn-secondary mt-5 mb-5" style="font-size:30px;">$500<br><p style="font-size: 15px;">+$100 bonus</p></button>
+            </div>
+            <div class="col-md-3 text-center">
+                <button type="button" class="btn btn-secondary mt-5 mb-5 pl-2 pr-2" style="font-size:30px;background-color: rgb(71, 60, 214);">Top up for $500</button>&nbsp;
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="text-center pt-5 display-1 pb-5">Choose your plan</h1>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 "  *ngFor="let sub of subscriptionData" style=" background-color: rgb(39, 37, 37);border-radius: 25px;">
+                
+                <span class="badge" *ngIf="sub.offers!=''" style="font-size: 30px;color:black; background-color: rgb(66, 182, 20);"><span *ngFor="let offer of sub.offers">{{offer}}</span></span>
+                <h1 class="pt-5 pb-5" >{{sub.title}}</h1>
+                <span class="badge bg-light" style="font-size: 30px;color:black">{{sub.amount}}&nbsp;$</span>
+                <span class="badge bg-light m-2" style="font-size: 30px;color:black">{{sub.duration}}</span>
+                <span class="badge bg-light" style="font-size: 30px;color:black" *ngIf="sub.hours!=null">{{sub.hours}}&nbsp;Hours</span>
+                <ul class="list-unstyled pt-3 pb-5" >
+                    <li>
+                        <ul *ngFor="let detail of sub.details">
+                            <li>{{detail}}</li>
+                            <!-- <li>Coach will focus on improving your skills </li>
+                            <li>Dashboard Access: goals and progress</li>
+                            <li>Our top players and best coaching practices</li> -->
+                        </ul>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary" style="background-color: rgb(22, 21, 21); border-color: rgb(51, 50, 50); width: 100%; font-size: 2rem;">More Info</button><br><br>
+                <button type="button" class="btn btn-primary pb=5" style="width: 100%; font-size: 2rem; background-color: rgb(56, 172, 11); border-color: rgb(51, 50, 50);" *ngIf="sub.isActive==true">Activate</button>
+                <br><br>
+            </div>
+            <!-- <div class="col-md-6" >
+                <div class="pt-5" style="background-color: rgb(39, 37, 37);border-radius: 25px; padding-left:5px;min-height: 640px;">
+                    <h1 class="pt-5 pb-5" >Standard Monthly Subscription</h1>
+                    <span class="badge bg-light" style="font-size: 30px;color:black">$50 per month</span>
+                    <ul class="list-unstyled pt-3 pb-5">
+                        <li>
+                            <ul>
+                                <li>Play with PROs and community members</li>
+                                <li>$50 balance to play with Pros monthly</li>
+                                <li>Senior league tournaments</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-primary mb=5" style="width: 100%; font-size: 2rem;margin-top: 130px;">Top up for $50 to activate</button>
+                </div>
+            </div> -->
+        </div>
+</div>
+    
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>
+    
+   

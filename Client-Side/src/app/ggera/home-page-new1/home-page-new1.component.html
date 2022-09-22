@@ -1,0 +1,254 @@
+<div class="ptb-100">
+    <app-nav-bar> </app-nav-bar>
+</div>
+
+<div class="container pt-5" *ngFor="let party of parties$ | async">
+    <div class="d-flex justify-content-center">
+        <div class="col-lg-9 col-sm-12 col-md-12">
+            <div class="card bg border">
+                <div class="d-flex justify-content-center">
+                    <div class="col-lg-12 col-sm-12 col-md-12">
+                        <app-video-player [src]="party.url"></app-video-player>
+                        <!-- <iframe width="885" height="498" [src]="sanitizeUrl(party.url)"
+                            [title]="party.title" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe> -->
+                    </div>
+                </div>
+                <div class="col-lg-12"></div>
+                <div class="d-flex flex-row m-2 pt-5 pb-5">
+                    <div class="d-flex justify-content-between">
+                        <div class="col-lg-8">
+                            <div class="default-btn m-1">Highlights</div>
+                            <div class="default-btn m-1">{{getSlotsLeft(party)}}</div>
+                            <div class="default-btn m-1">{{party.isPrivate ? 'private': 'public'}}</div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <h5 class="text-right" style="font-weight: 800">
+                                    {{party.title}}
+                                </h5>
+                                <p class="text-right" style="color: gray">
+                                    {{party.lobbyDescription}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row m-2 pt-5 pb-5">
+                    <ng-container *ngFor="let user of party.users">
+                        <div class="col-lg-4" *ngIf="user._id !== party.createdBy">
+                            <div class="card bg1 m-1">
+                                <div class="d-flex flex-row">
+                                    <img [src]="user.profile_pic" [alt]="user.username" style="width: 80px;"
+                                        class="m-3" />
+
+
+                                    <div class="row p-3">
+                                        <h6>{{user.username | titlecase}}</h6>
+                                        <!-- <img src="../../../assets/img/awards2.png" alt="" srcset=""
+                                            style="width: 80px;height: 50px;"> -->
+
+
+                                    </div>
+                                </div>
+                                <small class="p-3">{{user.about}}</small>
+                                <div class="d-flex flex-row p-2">
+                                    <div class=" p-2">
+                                        <h6>{{user.channel_name}}</h6>
+                                    </div>
+                                    <div class="p-2">
+                                        <h6>K.D : {{user.kd}}</h6>
+                                    </div>
+
+                                </div>
+                                <P class="p-3">ELO .{{user.elo}}</P>
+
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngFor="let n of getSlotsLeftArray(party)">
+                        <div class="col-lg-4">
+                            <div class="card bg1 m-1" style="height: 300px;"> +</div>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="col-lg-12">
+                    <div style="cursor: pointer;" class="d-flex justify-content-center"
+                        (click)="userPayForParty({partyId: party._id, price: party.price, name: party.title, partyCreatedBy: party.createdBy})">
+                        <!-- (click)="newStripe({partyId: party._id, price: party.price, name: party.title})"> -->
+                        <div class="default-btn m-1"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                            </svg> Join party ${{party.price}}/h</div>
+                    </div>
+                    <div class="d-flex justify-content-center pt-3">
+                        <h5 style="color:gray ;">Autoharge will be enable for the next session
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="d-flex justify-content-center pt-3">
+    <div class="default-btn m-1" style="font-size: 20px !important" data-bs-dismiss="modal" style="cursor: pointer"
+        data-bs-toggle="modal" data-bs-target="#exampleModal12">More Pros </div>
+</div>
+
+
+<!-- modal  -->
+<div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="container">
+            <div class="modal-content" style="padding: 0">
+                <div class="modal-body" style="padding: 0; margin: 0">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-10 col-md-10 card bg-black border">
+                            <h1 class="p-2 text-center pt-5">
+                                Find pros or join teams
+                            </h1>
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="col-lg-10 col-md-6 col-sm-12 p-2">
+                                    <div class="card bg3">
+                                        <div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <input class="form-check-input m-3" type="radio"
+                                                        name="flexRadioDefault" id="flexRadioDefault1" />
+                                                    <label class="form-check-label p-3" for="flexRadioDefault1">
+                                                        <h3>
+                                                            Personalized
+                                                            coaching
+                                                        </h3>
+                                                    </label>
+                                                </div>
+                                                <div class="d-flex flex-row">
+                                                    <button class="default-btn m-3" style="
+                                                         background-color: yellow;
+                                                         color: black;
+                                                     ">
+                                                        1 pro
+                                                    </button>
+                                                    <p class="pt-4 pr-1">
+                                                        16% winrate
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <h6 class="p-3">
+                                                1v1 , training grounds , vod
+                                                review , skills evaluation
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="col-lg-10 col-md-6 col-sm-12 p-2">
+                                    <div class="card bg3">
+                                        <div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <input class="form-check-input m-3" type="radio"
+                                                        name="flexRadioDefault" id="flexRadioDefault1" />
+                                                    <label class="form-check-label p-3" for="flexRadioDefault1">
+                                                        <h3>
+                                                            Practice and fun
+                                                        </h3>
+                                                    </label>
+                                                </div>
+
+                                                <div class="d-flex flex-row">
+                                                    <button class="default-btn m-3">
+                                                        2 pro
+                                                    </button>
+                                                    <p class="pt-4 pr-1">
+                                                        33% winrate
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <h6 class="p-3">
+                                                Training ground warm up,play
+                                                high rank /kd lobbies ,
+                                                craft synergy
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="col-lg-10 col-md-6 col-sm-12 p-2">
+                                    <div class="card bg3">
+                                        <div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <input class="form-check-input m-3" type="radio"
+                                                        name="flexRadioDefault" id="flexRadioDefault1" />
+                                                    <label class="form-check-label p-3" for="flexRadioDefault1">
+                                                        <h3>
+                                                            Personalized
+                                                            coaching
+                                                        </h3>
+                                                    </label>
+                                                </div>
+
+                                                <div class="d-flex flex-row">
+                                                    <button class="default-btn m-3">
+                                                        2 pro
+                                                    </button>
+                                                    <p class="pt-4 pr-1">
+                                                        33% winrate
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <h6 class="p-3">
+                                                Training ground warm up,play
+                                                high rank /kd lobbies ,
+                                                craft synergy
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="col-lg-10 col-md-6 col-sm-12 p-2">
+                                    <div class="form-group">
+                                        <div class="select-box">
+                                            <select>
+                                                <option value="All" disabled selected>
+                                                    Select your pros taariff
+                                                </option>
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row justify-content-center pt-5 pb-5">
+                                <div class="default-btn text-center">
+                                    Choose pro
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>

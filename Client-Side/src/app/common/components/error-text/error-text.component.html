@@ -1,0 +1,5 @@
+<div *ngIf="control && control?.errors && (control?.dirty || control?.touched)">
+    <small *ngFor="let error of getErrors(control.errors)" class="form-text text-danger">
+        {{error.msg}}
+    </small>
+</div>

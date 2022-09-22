@@ -1,0 +1,198 @@
+<div class="pb-100">
+    <app-nav-bar> </app-nav-bar>
+</div>
+
+<section class="section1">
+<section class="ptb-100">
+    <div class="container">
+
+        <div class="section-title">
+            <h2 class="ptb-100 text-center">Pro Players</h2>
+        </div>
+
+        <section class="social-area  ">
+            <div class="row d-flex justify-content-center">
+
+
+                <div class="col-lg-2 col-sm-4 col-md-4 col-6">
+                    <div class="single-social-box">
+                        <div class="content">
+                            <i class='bx bxl-facebook'></i>
+                            COD:Warzone
+                        </div>
+                        <div class="shape">
+                            <img src="assets/img/social-shape1.png" alt="image">
+                            <img src="assets/img/social-shape3.png" alt="image">
+                        </div>
+                        <a href="#" target="_blank" class="link-btn"></a>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-2 col-sm-4 col-md-4 col-6">
+                    <div class="single-social-box">
+                        <div class="content">
+                            <i class='bx bxl-youtube'></i>
+                            Fornite
+                        </div>
+                        <div class="shape">
+                            <img src="assets/img/social-shape1.png" alt="image">
+                            <img src="assets/img/social-shape5.png" alt="image">
+                        </div>
+                        <a href="#" target="_blank" class="link-btn"></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-4 col-md-4 col-6">
+                    <div class="single-social-box">
+                        <div class="content">
+                            <i class='bx bxl-instagram'></i>
+                            Valorant
+                        </div>
+                        <div class="shape">
+                            <img src="assets/img/social-shape1.png" alt="image">
+                            <img src="assets/img/social-shape6.png" alt="image">
+                        </div>
+                        <a href="#" target="_blank" class="link-btn"></a>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let privateUser of privateUsers.slice(0,4)" (click)="singlePro(privateUser._id)" style="cursor:pointer ;">
+                <div class="single-team-member">
+                    <img class="img1" src={{privateUser?.profile_pic}} alt="image" >
+
+                    <div class="content">
+                        <h3>{{privateUser.username}}</h3>
+                        <span>{{privateUser.gamerID}}</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+        <a routerLink="/players" class="optional-btn ">More</a>
+    </div>
+
+</section>
+
+
+<div class="main-banner jarallax" data-jarallax='{"speed": 0.3}'>
+    <div class="container pt-5">
+        <div class="d-flex justify-content-center">
+            <div class="col-lg-9 col-sm-12 col-md-12">
+                <iframe
+                    width="885"
+                    height="498"
+                    src="https://www.youtube.com/embed/0E44DClsX5Q"
+                    title="Official Trailer | Call of Duty: Warzone"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="col-lg-9 col-sm-12 col-md-12">
+                <div class="card bg border">
+                    <div class="col-lg-12"></div>
+                    <div class="d-flex flex-row m-2 pt-5 pb-5">
+                        <div class="d-flex justify-content-between">
+                            <div class="col-lg-8">
+                                <div class="default-btn m-1">Highlights</div>
+                                <div class="default-btn m-1">2 free slots</div>
+                                <div class="default-btn m-1">private</div>
+                            </div>
+    
+                            <div class="col-lg-4">
+                                <div class="row">
+                                    <h5 class="text-right" style="font-weight: 800">
+                                        ADVANCED PvP Coaching
+                                    </h5>
+                                    <p class="text-right" style="color: gray">
+                                        Playing Personalized coaching on Tokyo
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="d-flex flex-row m-2 pt-5 pb-5">
+                        <div class="col-lg-4">
+                            <div class="card bg1 m-1">
+                                <div class="d-flex flex-row">
+                                    <img src="../../../assets/img/user3.jpg" alt="" srcset="" style="width: 80px;" class="m-3">
+    
+                                    
+                                    <div class="row p-3">
+                                        <h6>Juana fili</h6>
+                                        <img src="../../../assets/img/awards2.png" alt="" srcset="" style="width: 80px;height: 50px;">
+    
+                                        
+                                    </div>
+                                </div>
+                                <p class="p-3">halo hai how are you ok bie</p>
+                                <div class="d-flex flex-row p-2">
+                                    <div class=" p-2"><h6 >Venezualla</h6> </div>
+                                    <div class="p-2">
+                                        <h6 >K.D : 2.1</h6>
+                                    </div>
+                                   
+                                </div>
+                                <P class="p-3">ELO .1</P>
+    
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card bg1 m-1" style="height: 300px;"> +</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card bg1 m-1" style="height: 300px;">
+                            <div class="d-flex align-items-center">
+                                +
+                            </div></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div style="cursor: pointer;" class="d-flex justify-content-center" >
+                            <div class="default-btn m-1" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                              </svg> Join party $16/h</div>
+                             
+                        </div>
+                        <div class="d-flex justify-content-center pt-3" ><h5 style="color:gray ;">Autoharge will be enable for the next session
+                        </h5></div>
+                        
+    
+                        
+                    </div>
+                    
+    
+    
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center pt-3" >
+            <div class="default-btn m-1"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+              </svg> </div>
+        </div>
+    
+    </div>
+    <div class="d-flex justify-content-center mt-5 pb-5">
+        <a routerLink="/join-party" class="optional-btn ">More</a>
+    </div>
+</div>
+
+</section>
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>

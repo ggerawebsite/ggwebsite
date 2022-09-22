@@ -1,0 +1,286 @@
+<div class="pb-100">
+    <app-nav-bar> </app-nav-bar>
+</div>
+
+<section class="live-stream-area ptb-100 jarallax" data-jarallax='{"speed": 0.3}'>
+    <div class="container">
+        <div class="section-title">
+            <!-- <span class="sub-title">Watch</span> -->
+            <h2>Order History</h2>
+        </div>
+        <div class="live-stream-tabs card bg-transparent border">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="twitch-tab" data-bs-toggle="tab" data-bs-target="#twitch"
+                        type="button" role="tab" aria-controls="twitch" aria-selected="true">Order Completed</button>
+                </li>
+                <!-- <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="youtube-tab" data-bs-toggle="tab" data-bs-target="#twitch"
+                        type="button" role="tab" aria-controls="youtube" aria-selected="false">Completed</button>
+                </li> -->
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="mixer-tab" data-bs-toggle="tab" data-bs-target="#mixer" type="button"
+                        role="tab" aria-controls="mixer" aria-selected="false">Pending</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="vimeo-tab" data-bs-toggle="tab" data-bs-target="#vimeo" type="button"
+                        role="tab" aria-controls="vimeo" aria-selected="false">Lobbies</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="twitch" role="tabpanel">
+                    <div class="container">
+                        <div class="row d-flex justify-content-center">
+                            <div class=" col-lg-9 col-md-12  pt-100 pb-100 d-flex justify-content-center" style="font-family: 'Poppins';">
+                                <div class="card products-details-desc bg-black border2  p-5">
+                                    <span class="sku pb-5" style="font-size: small;">#11203</span>
+                                    <div class="row pb-5">
+                                        <div class="d-flex justify-content-between " >
+                                            <div>
+                                                <h1 style="font-family: 'Poppins';">COD:WARZONE</h1>
+                                            </div>
+                                           
+                                            <div class="price">
+                                                <img src="../../../assets/img/vip.png" alt="" style="height: 50px;width:50px">
+                                                <span class="new-price" style="font-size: x-large;">$10/hour</span>
+                                                <span class="old-price">$210</span>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="rating-count">Reported 200 minutes started on feb 18th
+                                            ,4:26pm</a>
+                                    </div>
+                                    <div class="d-flex justify-content-between m-1">
+                                        <div>
+                                            <h4 style="font-family: 'Poppins';"> Turkif1#3955</h4>
+                                        </div>
+                                       
+                                        <div class="price">
+                                            <span class="new-price" style="font-size: small;">Turkif1#3955</span>
+                                            
+                                        </div>
+                                    </div>
+                                   
+                                    
+                                
+                                    <div class="products-meta">
+                                        <div class="row">
+                                            <span>Goal :<span class="" >Pure Fun</span></span>
+                                            <span>Rank :<span class="in-stock">Not available</span></span>
+                                            <span>Country: <a href="#">russia</a></span>
+                                        </div>
+                                    
+                                        <!-- <span>Tag: <a href="#">Book</a></span> -->
+                                    </div>
+                                    <div class="products-add-to-cart">
+                                        <!-- <div class="input-counter">
+                                            <span class="minus-btn"><i class='bx bx-minus'></i></span>
+                                            <input type="text" min="1" value="1">
+                                            <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                                        </div> -->
+
+
+                                    </div>
+                                    <div class="card bg-transparent p-3 border mb-4 col-lg-8 text-center">REQUIREMENT PLAY ON LONDON SERVER
+                                        </div>
+                                    <div type="submit" class="card bg-transparent p-3 border pt-2 col-lg-4 text-center"(click)="openForm()">GO TO CHAT</div>
+                                   
+                                </div>
+                            </div>
+
+                            <div class=" col-lg-9 col-md-12  pt-100 pb-100 d-flex justify-content-center" style="font-family: 'Poppins';">
+                                <div class="card products-details-desc bg-black border2  p-5">
+                                    <span class="sku pb-5" style="font-size: small;">#11203</span>
+                                    <div class="row pb-5">
+                                        <div class="d-flex justify-content-between " >
+                                            <div>
+                                                <h1 style="font-family: 'Poppins';">COD:WARZONE</h1>
+                                            </div>
+                                           
+                                            <div class="price">
+                                                <img src="../../../assets/img/vip.png" alt="" style="height: 50px;width:50px">
+                                                <span class="new-price" style="font-size: x-large;">$10/hour</span>
+                                                <span class="old-price">$210</span>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="rating-count">Reported 200 minutes started on feb 18th
+                                            ,4:26pm</a>
+                                    </div>
+                                    <div class="d-flex justify-content-between m-1">
+                                        <div>
+                                            <h4 style="font-family: 'Poppins';"> Turkif1#3955</h4>
+                                        </div>
+                                       
+                                        <div class="price">
+                                            <span class="new-price" style="font-size: small;">Turkif1#3955</span>
+                                            
+                                        </div>
+                                    </div>
+                                   
+                                    
+                                
+                                    <div class="products-meta">
+                                        <div class="row">
+                                            <span>Goal :<span class="" >Pure Fun</span></span>
+                                            <span>Rank :<span class="in-stock">Not available</span></span>
+                                            <span>Country: <a href="#">russia</a></span>
+                                        </div>
+                                    
+                                        <!-- <span>Tag: <a href="#">Book</a></span> -->
+                                    </div>
+                                    <div class="products-add-to-cart">
+                                        <!-- <div class="input-counter">
+                                            <span class="minus-btn"><i class='bx bx-minus'></i></span>
+                                            <input type="text" min="1" value="1">
+                                            <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                                        </div> -->
+
+
+                                    </div>
+                                    <div class="card bg-transparent p-3 border mb-4 col-lg-8 text-center">REQUIREMENT PLAY ON LONDON SERVER
+                                        </div>
+                                    <div type="submit" class="card bg-transparent p-3 border pt-2 col-lg-4 text-center"(click)="openForm()">GO TO CHAT</div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+              
+                <div class="tab-pane fade" id="mixer" role="tabpanel">
+                    <div class="row d-flex justify-content-center"  *ngFor="let sub of pendingSubscribers">
+                        <div class=" col-lg-9 col-md-12  pt-100 pb-100 d-flex justify-content-center" style="font-family: 'Poppins';">
+                            <div class="card products-details-desc bg-black border2  p-5 ">
+                                <span class="sku pb-5" style="font-size: small;">#{{sub.order_no}}</span>
+                                <div class="row pb-5">
+                                    <div class="d-flex justify-content-between " >
+                                        <div>
+                                            <h1 style="font-family: 'Poppins';">COD:WARZONE</h1>
+                                        </div>
+                                       
+                                        <div class="price">
+                                            <img src="../../../assets/img/vip.png" alt="" style="height: 50px;width:50px">
+                                            <span class="new-price" style="font-size: x-large;">${{proDetail.vip_cost}} /hour</span>
+                                            <span class="old-price">$210</span>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="rating-count">Reported 200 minutes started on feb 18th
+                                        ,4:26pm</a>
+                                </div>
+                                <div class="d-flex justify-content-between m-1">
+                                    <div>
+                                        <h4 style="font-family: 'Poppins';"> {{sub.alldata[0].username}} </h4>
+                                    </div>
+                                   
+                                    <div class="price">
+                                        <span class="new-price" style="font-size: small;">{{sub.alldata[0].username}} </span>
+                                        
+                                    </div>
+                                </div>
+                               
+                                
+                            
+                                <div class="products-meta">
+                                    <div class="row">
+                                        <span>Goal :<span class="" >Pure Fun</span></span>
+                                        <span>Rank :<span class="in-stock">Not available</span></span>
+                                        <span>Country: <a href="#">{{sub.alldata[0].country}}</a></span>
+                                    </div>
+                                
+                                    <!-- <span>Tag: <a href="#">Book</a></span> -->
+                                </div>
+                                <div class="products-add-to-cart">
+                                    <!-- <div class="input-counter">
+                                        <span class="minus-btn"><i class='bx bx-minus'></i></span>
+                                        <input type="text" min="1" value="1">
+                                        <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                                    </div> -->
+    
+    
+                                </div>
+                                <div class="card bg-transparent p-3 border mb-4 col-lg-8 text-center">REQUIREMENT PLAY ON LONDON SERVER
+                                    </div>
+                                <div type="submit" class="card bg-transparent p-3 border pt-2 col-lg-4 text-center"(click)="openForm()">GO TO CHAT</div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="vimeo" role="tabpanel">
+                    <div class="row d-flex justify-content-center">
+                        <ng-container *ngIf="lobbies">
+
+                        
+                        <div  *ngFor="let lobby of lobbies" class=" col-lg-9 col-md-12  pt-3 pb-5 d-flex justify-content-center" style="font-family: 'Poppins';">
+                            <div class="card products-details-desc bg-black border2  p-5  pb-5">
+                                <!-- <span class="sku pb-5" style="font-size: small;">#11203</span> -->
+                                <div class="row pb-5 pt-4">
+                                    <div class="d-flex justify-content-between " >
+                                        <div>
+                                            <h1 style="font-family: 'Poppins';">{{lobby.lobbyData.map}}</h1>
+                                        </div>
+                                        <div class="price">
+                                            <!-- <img src="../../../assets/img/vip.png" alt="" style="height: 50px;width:50px"> -->
+                                            <span class="new-price" style="font-size: x-large;">$10/hour</span>
+                                            <!-- <span class="old-price">$210</span> -->
+                                        </div>
+                                    </div>
+                                    <a  class="rating-count">{{lobby.lobbyData.player.team}}
+                                        </a>
+                                    <a  class="rating-count">Match ID : {{lobby.matchId}}
+                                        </a>
+                                </div>
+                                                                  
+                                <div class=" card bg-black border ">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12 d-flex justify-content-center p-5">
+                                            <img src="../../../assets/img/avatar.png" alt="" style="height: 120px; width: 100px;">
+                                            <div class="row">
+                                                <div class="new-price p-2">{{lobby.lobbyData.player.username}}</div>
+                                                <div>
+                                                    <img src="../../../assets/img/vip.png" alt="" class="" style="height: 50px;width:50px">
+                                                    #{{lobby.lobbyData.player.rank}}
+                                                </div>
+                                                <div class="new-price p-2">Player Count: {{lobby.lobbyData.playerCount}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12 d-flex justify-content-center p-5">
+                                            <a (click)="enterLobby(lobby)">
+                                            <img src="../../../assets/img/lobby.png" alt="" style="height: 120px; width: 100px;"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        </ng-container>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div *ngIf="modalOpen">
+    <div class="chat-popup" style="display: block;" [style.display]="style1 ? 'block' : 'none'" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Chat</h1>
+
+            <label for="msg"><b>Message</b></label>
+            <textarea placeholder="Type message.." name="msg" required></textarea>
+
+            <button type="submit" class="btn">Send</button>
+            <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+        </form>
+    </div>
+
+</div>
+
+
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>

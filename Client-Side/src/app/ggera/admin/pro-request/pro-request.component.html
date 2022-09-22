@@ -1,0 +1,14 @@
+<div class="container">
+    <ng-container *ngIf="proUsers$ | async as proUsers">
+        <div class="row g-6">
+            <div *ngFor="let user of proUsers" class="col-4 m-2 card text-bg-dark">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.username}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{user.provider | titlecase }}</h6>
+                    <p class="card-text">{{ user.email }}</p>
+                    <a (click)="activateUser(user._id)" class="btn btn-primary">Activate</a>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

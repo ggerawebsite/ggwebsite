@@ -1,0 +1,17 @@
+.stepper {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    .heading {
+        color: #ff7019;
+        font-size: 5rem;
+    }
+    .content {
+        * {
+            font-size: 2rem;
+        }
+        padding: 1rem 2rem;
+        border: 1px solid #913c0d;
+        background-color: rgba($color: #913c0d, $alpha: 0.4);
+    }
+}

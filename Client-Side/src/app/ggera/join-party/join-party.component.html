@@ -1,0 +1,134 @@
+<div class="pb-100">
+    <app-nav-bar> </app-nav-bar>
+</div>
+
+<section class="section1">
+
+<div class="main-banner jarallax" data-jarallax='{"speed": 0.3}'>
+    <div class="container">
+
+        <div class="d-flex justify-content-center p-3">
+            <button type="submit" class="default-btn" *ngIf="heroService.isPro()" (click)="newParty()">Create a new Party</button>
+        </div>
+
+
+        <!-- ?for normal user  -->
+        <section class="social-area pt-100 "*ngIf="heroService.isNormal()">
+            <div class="row d-flex justify-content-center">
+
+
+                <div class="col-lg-2 col-sm-4 col-md-4 col-6">
+                    <div class="single-social-box">
+                        <div class="content">
+                            <i class='bx bxl-facebook'></i>
+                            COD:Warzone
+                        </div>
+                        <div class="shape">
+                            <img src="assets/img/social-shape1.png" alt="image">
+                            <img src="assets/img/social-shape3.png" alt="image">
+                        </div>
+                        <a href="#" target="_blank" class="link-btn"></a>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-2 col-sm-4 col-md-4 col-6">
+                    <div class="single-social-box">
+                        <div class="content">
+                            <i class='bx bxl-youtube'></i>
+                            Fornite
+                        </div>
+                        <div class="shape">
+                            <img src="assets/img/social-shape1.png" alt="image">
+                            <img src="assets/img/social-shape5.png" alt="image">
+                        </div>
+                        <a href="#" target="_blank" class="link-btn"></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-4 col-md-4 col-6">
+                    <div class="single-social-box">
+                        <div class="content">
+                            <i class='bx bxl-instagram'></i>
+                            Valorant
+                        </div>
+                        <div class="shape">
+                            <img src="assets/img/social-shape1.png" alt="image">
+                            <img src="assets/img/social-shape6.png" alt="image">
+                        </div>
+                        <a href="#" target="_blank" class="link-btn"></a>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+<!-- ?for pro user  -->
+<section class="social-area pt-100 "*ngIf="heroService.isPro()">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-2 col-sm-4 col-md-4 col-6">
+            <div class="single-social-box">
+                <div class="content">
+                    Your  Parties
+                </div>
+                <div class="shape">
+                    <img src="assets/img/social-shape1.png" alt="image">
+                    <img src="assets/img/social-shape3.png" alt="image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <ng-container *ngIf="myParties$ | async as myParties">
+        <ng-container *ngFor="let party of myParties">
+            <!-- <span>{{party | json    }}</span> -->
+            <div class="banner-video-box p-3">
+                <app-video-player [src]="party.url"></app-video-player>
+            </div>
+            <div class="single-popular-leagues-box" >
+                <div class="popular-leagues-box d-flex justify-content-center">
+                    <div class="popular-leagues-content">
+                        <div class="content">
+                            <h3>{{party.title}} <span class="badge rounded-pill text-bg-primary">{{party.status | titlecase}}</span></h3>
+                            <p>{{party.lobbyDescription}}</p>
+                            <ul class="info">
+                                <li><i class="flaticon-coin"></i>Live</li>
+                                <li><i class="flaticon-game"></i>4 free slots</li>
+                                <li><i class="flaticon-game-1"></i>Stream</li>
+                                <li><i class="flaticon-teamwork"></i>{{party.isPrivate ? 'Private': 'Public'}}</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <a class="btnLink" [routerLink]="['/party', party._id]">View Party</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab faq-accordion-tab pt-3">
+                    <ul class="tabs d-flex flex-wrap justify-content-center">
+                    <ng-container *ngFor="let user of party.users">
+                        <li *ngIf="user._id !== party.createdBy">
+                            <a href="#"><i class='bx bx-plus'></i> 
+                                <span>{{user.username}}</span> 
+                            </a>
+                        </li>
+                    </ng-container>
+                    <ng-container *ngFor="let n of getSlotsLeftArray(party); let index">
+                        <li><a href="#"><i class='bx bx-plus'></i> <span>Slot {{index+ 1}}</span> </a></li>
+                    </ng-container>
+                    </ul>
+                </div>
+                <div class="d-flex justify-content-center p-3">
+                    <button class="default-btn" *ngIf="heroService.isNormal()" (click)="twitch('ashinamanulla')">Join Party ${{party.price}}/hr</button>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+    </div>
+</div>
+</section>
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>

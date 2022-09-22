@@ -1,0 +1,61 @@
+<div class="ptb-100">
+    <app-nav-bar> </app-nav-bar>
+</div>
+<div class="container">
+    <div class="Wrapper">
+        <ng-container *ngIf="partyDetails$ | async as partyDetails;else loading;">
+            <button *ngIf="partyDetails.status === 'idle'" (click)="startParty()" type="button">Start Party</button>
+            <button *ngIf="partyDetails.status === 'inProgress'" (click)="stopParty()" type="button">Stop Party</button>
+            <p *ngIf="partyDetails.status === 'stopped'"><strong>{{partyDetails.title | titlecase}}</strong> Party Complete</p>
+
+            <div class="row  align-items-start">
+                <table *ngIf="!showForm">
+                    <ng-container *ngFor="let user of partyDetails.users">
+                        <tr *ngIf="user._id !== partyDetails.createdBy">
+                            <th class="p-3">
+                                {{user.username}}
+                            </th>
+                        </tr>
+                    </ng-container>
+                </table>
+                <ng-container *ngIf="showForm">
+                    <div class="row">
+                        <div class="col">
+                            <form [formGroup]="frmTimeSpent" (ngSubmit)="saveTimeSpent($event)">
+                                <table>
+                                    <ng-container *ngFor="let user of partyDetails.users">
+                                        <tr *ngIf="user._id !== partyDetails.createdBy">
+                                            <th class="p-3">
+                                                {{user.username}}
+                                            </th>
+                                            <td>
+                                                <input type="text" placeholder="Time Spent" formControlName="{{user._id}}">
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </table>
+                                <button *ngIf="partyDetails.status === 'stopped'" (click)="stopParty()"
+                                    type="submit">Save</button>
+                            </form>
+                        </div>
+                        <div class="col">
+                            <div class="">
+                                <p>*Use the format to save time spent: 6h 45m</p>
+                                <ul class="">
+                                    <li>h = hours</li>
+                                    <li>m = minutes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+        <ng-template #loading>
+            <p>Loading Party Data..</p>
+        </ng-template>
+    </div>
+
+</div>
+
+<app-new-footer></app-new-footer>

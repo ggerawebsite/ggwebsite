@@ -1,0 +1,48 @@
+<div class="container">
+    <ng-container *ngIf="stats$ | async as stats">
+        <div class="row">
+            <div class="col m-2 card text-bg-dark text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Subscriber</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Number of users subscribed</h6>
+                    <p class="card-text">{{ stats.subscriber }}</p>
+                </div>
+            </div>
+            <div class="col m-2 card text-bg-dark text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Pro Users</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Number of pro users</h6>
+                    <p class="card-text">{{ stats.proUsers }}</p>
+                </div>
+            </div>
+            <div class="col m-2 card text-bg-dark text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Pro Requests</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Number of pro requests</h6>
+                    <p class="card-text">{{ stats.proRequest }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-12 col-lg-5 col-md-6">
+                <canvas baseChart [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions"
+                    [plugins]="pieChartPlugins">
+                </canvas>
+            </div>
+        </div>
+    </ng-container>
+    <div class="col m-2 card text-bg-dark text-center">
+        <div class="card-body">
+            <h1 class="card-title">TOTAL PRO USERS EARNINGS</h1>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Number of users subscribed</h6> -->
+            <h2 class="card-text"><b>{{proEarning}}</b></h2>
+        </div>
+    </div>
+    <div class="col m-2 card text-bg-dark text-center">
+        <div class="card-body">
+            <h1 class="card-title">GGERA ACCOUNT BALANCE</h1>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Number of users subscribed</h6> -->
+            <h2 class="card-text"><b>${{balance.balance}}</b></h2>
+        </div>
+    </div>
+</div>

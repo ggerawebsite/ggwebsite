@@ -1,0 +1,9 @@
+img.logo {
+    width: 50px;
+}
+.nav-link {
+    padding: 1rem 1.75rem;
+    &.active {
+        border-bottom: 3px solid #ccc;
+    }
+}

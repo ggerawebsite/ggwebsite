@@ -1,0 +1,55 @@
+nav {
+    display: flex;
+    .menu-list {
+        width: 100%;
+        ul {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            li {
+                list-style: none;
+                margin: 1em 2em;
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    justify-items: start;
+                    align-items: flex-start;
+                    position: relative;
+                    z-index: 2;
+                    // &:before,
+                    &:after {
+                        filter: blur(1rem);
+                        display: none;
+                        content: "";
+                        position: absolute;
+                        top: 30px;
+                        left: 20%;
+                        width: 60px;
+                        height: 50px;
+                        border-radius: 100%;
+                        background: #f36b18;
+                        z-index: 1;
+                    }
+                    &.active {
+                        // &:before,
+                        &:after {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.container {
+    padding: 1em;
+    height: 100%;
+    width: 100%;
+}
+
+.section1{
+    background-image: url('../../../assets/img/ddd.png');
+    background-repeat: repeat;
+    background-size:contain;
+}

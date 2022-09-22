@@ -1,0 +1,81 @@
+<section class="pt-5">
+    <div class="container ">
+        <div class="row justify-content-center">
+            <a href="http://ec2-3-132-235-255.us-east-2.compute.amazonaws.com/index.html" class=" text-center">Home</a>
+        </div>
+    </div>
+</section>
+            
+<section class="profile-authentication-area ptb-100">
+    <div class="container ">
+        <div class="row flex justify-content-center">
+            <div class="col-lg-6 col-md-12 ">
+                <div class="login-form card ml-5">
+                    <h2 class="text-center">SignIn</h2>
+
+                    <form *ngIf="!otp" [formGroup]="SignUpForm" (ngSubmit)="SignUp()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="email"
+                                placeholder="Username or email" >
+                        </div>
+                        <button type="submit">Send OTP</button>
+                    </form>
+
+                    <form *ngIf="otp" [formGroup]="OTPForm" (ngSubmit)="OTP()">
+                        <div class="form-group">
+                            <input type="number" formControlName="otp" class="form-control" placeholder="OTP ">
+                        </div>
+                        <button type="submit">LogIn</button>
+                    </form>
+
+
+                    <h1 class="text-center pt-3 pb-3">OR</h1>
+
+
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-md-6 col-6">
+                            <div class="single-social-box">
+                                <a href="https://newggera.herokuapp.com/api/auth/discord/redirect" 
+                                    style="cursor:pointer ;">
+
+                                    <div class="content">
+                                        <i class='bx bxl-discord'></i>
+                                        Discord
+                                    </div>
+                                    <div class="shape">
+                                        <img src="assets/img/social-shape1.png" alt="image">
+                                        <img src="assets/img/social-shape2.png" alt="image">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-6 col-md-6 col-6">
+                            <div class="single-social-box"  style="cursor: pointer;">
+
+                                <div class="content flex signINBtn">
+                                    <asl-google-signin-button #googleBtnRef (click)="signInWithGoogle()"> </asl-google-signin-button> 
+
+                                    <div class="p-3">  Google</div>
+                                </div>
+                                <div class="shape">
+                                    <img src="assets/img/social-shape1.png" alt="image">
+                                    <img src="assets/img/social-shape3.png" alt="image">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>
+
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>

@@ -1,0 +1,195 @@
+<div class="pb-100">
+    <app-nav-bar> </app-nav-bar>
+</div>
+
+
+
+
+<section class="contact-area ptb-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="contact-info">
+                    <span class="sub-title"> Details</span>
+                    <h2>Ready to become a Pro?</h2>
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra.</p> -->
+                    <ul>
+                        <li>
+                            <div class="icon">
+                                <i class="flaticon-medal"></i>
+                            </div>
+                            <p>You can verify instantly via your gaming platform or manually with some additonal details
+                            </p>
+                        </li>
+
+                        <li>
+                            <div class="icon">
+                                <i class="flaticon-medal"></i>
+                            </div>
+                            <p>We will verify that you are the account owner and check your tracker/ API statistics</p>
+                        </li>
+
+                        <li>
+                            <div class="icon">
+                                <i class="flaticon-medal"></i>
+                            </div>
+                            <p>If your stats meet our requirement , you will be directed to the dashboard automatically
+                            </p>
+                        </li>
+                        <span class="sub-title"> Good Luck!</span>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- phase1  -->
+            <div class="col-lg-6 col-md-12" *ngIf="!countryFlag && !submitFlag">
+                <div class="contact-form">
+                    <h2>Ready to Get Started?</h2>
+                    <form id="contactForm" [formGroup]="countryForm" (ngSubmit)="country()">
+                        <div class="row">
+                            <p>Please note that we do currently work with residents of Iran, north Korea, Ukrain, Crimea
+                                *</p>
+
+                            <div class="col-lg-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <div class="select-box">
+                                        <select formControlName="country">
+                                            <option value='{{country.name}}' *ngFor="let country of countrys">
+                                                {{country.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <button type="submit" class="default-btn"> Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Phase2  -->
+
+
+
+
+
+            <div *ngIf="countryFlag && !submitFlag " class="col-lg-6 col-md-12">
+                <div class="contact-form">
+                    <h2>Ready to Get Started?</h2>
+                    <form id="contactForm" [formGroup]="phase2Form" (ngSubmit)="phase2()">
+                        <div class="row">
+                            <p>Select the game in which you have the highest KD *</p>
+
+                            <div class="col-lg-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <div class="select-box">
+                                        <select formControlName="game">
+                                            <option value="PS">COD</option>
+                                            <option value="XBox">Valorant</option>
+                                            <option value="Win">Apex Legend</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>Select Your platform *</p>
+
+                            <div class="col-lg-12 col-md-6">
+                                <div class="form-group mb-3">
+                                    <div class="select-box">
+                                        <select formControlName="platform">
+                                            <option value="PS">Xbox</option>
+                                            <option value="XBox">Win</option>
+                                            <option value="Win">PS</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="form-group mb-3">
+                                    <input required placeholder="Kills" formControlName="kills">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="form-group mb-3">
+                                    <input type="text" required placeholder="KD" formControlName="kd">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="form-group mb-3">
+                                    <input type="text" required placeholder="Wins" formControlName="wins">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <button type="submit" class="default-btn">Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- phase 3  -->
+
+            <div *ngIf="submitFlag" class="col-lg-6 col-md-12">
+                <div class="contact-form">
+                    <h2>Successfully Submitted</h2>
+                    <form id="contactForm">
+                        <div class="row">
+                            <p>We are currently reviewing your request . It usually takes more than 2 working days. Once
+                                the decision is made you will get notification via discord</p>
+                                <h4> Join Our discord server to keep updated</h4>
+
+                                <div class="col-lg-12 col-md-12 pt-5">
+                                    <button type="submit" class="default-btn">Discord</button>
+                                </div>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer-area">
+    <app-new-footer></app-new-footer>
+</footer>

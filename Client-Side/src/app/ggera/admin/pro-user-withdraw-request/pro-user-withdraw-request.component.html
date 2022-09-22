@@ -1,0 +1,28 @@
+<ng-container *ngIf="withdrawRequest$ | async as withdrawRequest">
+    <div class="row">
+        <div class="col-12">
+            <h2>Withdraw Requests</h2>
+        </div>
+    </div>
+    <table class="table table-dark  table-striped-columns">
+        <thead>
+            <th>Request Id</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of withdrawRequest">
+                <td>{{request.orderNo}}</td>
+                <td>{{request.amount}}</td>
+                <td>
+                    <ng-container *ngIf="!request.isApproved; else approved;">
+                        <button class="btn btn-primary" (click)="approveRequest(request._id)">Approve</button>
+                    </ng-container>
+                    <ng-template #approved>
+                        <small>Approved</small>
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
