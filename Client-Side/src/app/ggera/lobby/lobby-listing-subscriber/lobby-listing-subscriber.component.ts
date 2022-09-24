@@ -64,6 +64,17 @@ export class LobbyListingSubscriberComponent implements OnInit {
     this._lobby.joinLobby(lobby,this.user, 'Amartin743')
       .subscribe(res => {
         console.log(res)
+        if(res.data == 'Stopped'){
+          Swal.fire({
+            icon: 'error',
+            title: 'Lobby Stopped By Pro',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            // this.router.navigate(['/lobby-listing-subscriber'])
+            // this.router.navigate([`/pro/enterlobby/${lobby}`])
+          })
+        } 
         if(res.data == 'exist'){
           Swal.fire({
             icon: 'success',

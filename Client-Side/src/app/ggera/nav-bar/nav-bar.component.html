@@ -108,7 +108,7 @@
                         <img style="width:100px ;" src="assets/img/circle gry black gredient.png" alt="logo">
                     </a>
                     <a class="navbar-brand">
-                        <div class="custom-select" style="width:500px; background-color: black;">
+                        <div class="custom-select" >
                             <select title="Select Game" style="background-color: black;" [formControl]="selectedGame">
                                 <option value="0">Select game:</option>
                                 <option *ngFor="let game of games"  value={{game._id}}> 
@@ -128,9 +128,9 @@
 
                 <div class="collapse navbar-collapse mean-menu">
                     <ul class="navbar-nav">
-                        <li class="nav-item" *ngIf="_auth.isNormal()"><a routerLink="/lobby-listing-subscriber" class="nav-link" >Home </a></li>
+                        <li class="nav-item box1" *ngIf="_auth.isNormal()"><a routerLink="/lobby-listing-subscriber" class="nav-link " >Home </a></li>
                         <li class="nav-item" *ngIf="!_auth.isNormal()"><a routerLink="/pro-home"
-                                class="nav-link">Dashboard </a></li>
+                                class="nav-link box1">Dashboard </a></li>
                         <!-- <li class="nav-item"><a routerLink="/subscriptions" class="nav-link"
                                 *ngIf="_auth.isNormal()">Subscriptions </a> </li> -->
 
@@ -154,10 +154,10 @@
                         </li> -->
 
                             <li class="nav-item" *ngIf="!_auth.isNormal()"><a routerLink="/pro-requests"
-                                    class="nav-link">Requests </a></li>
+                                    class="nav-link box1">Requests </a></li>
 
                             <li class="nav-item" *ngIf="!_auth.isNormal()"><a routerLink="/coming-soon"
-                                    class="nav-link">Tournaments </a></li>
+                                    class="nav-link box1">Tournaments </a></li>
 
 
                             <!-- <li class="nav-item"><a class="nav-link" *ngIf="_auth.isNormal()">Games <i
@@ -176,11 +176,11 @@
                             </ul>
                         </li> -->
 
-                            <li class="nav-item"><a *ngIf="_auth.isNormal()" style="cursor: pointer;" class="nav-link"
+                            <li class="nav-item box1" *ngIf="_auth.isNormal()"><a  style="cursor: pointer;" class="nav-link"
                                     (click)="Players()">Players </a>
                             </li>
 
-                            <li class="nav-item" *ngIf="_auth.isSuperAdmin()"><a class="nav-link">Admin <i
+                            <li class="nav-item " *ngIf="_auth.isSuperAdmin()"><a class="nav-link">Admin <i
                                         class="flaticon-down-arrow"></i></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
@@ -206,22 +206,54 @@
 
                         </ul>
                         <ul class="navbar-nav">
-                            <li class="nav-item" *ngIf="_auth.isPro()">
+                            <!-- <li class="nav-item" *ngIf="_auth.isPro()">
                                 <ul class="radioStatus">
                                     <li>
-                                        <input type="radio" name="selectStatus" />
+                                        <input type="radio" name="selectStatus1" />
                                         <label for="a25">Online</label>
                                     </li>
                                     <li>
-                                        <input type="radio" name="selectStatus" />
+                                        <input type="radio" name="selectStatus1" />
                                         <label for="a50">Booked</label>
                                     </li>
                                     <li>
-                                        <input type="radio" name="selectStatus" />
+                                        <input type="radio" name="selectStatus1" />
                                         <label for="a75">Busy</label>
                                     </li>
                                     <li>
-                                        <input type="radio" name="selectStatus" checked="checked" />
+                                        <input type="radio" name="selectStatus1" checked="checked" />
+                                        <label for="a100">Offline</label>
+                                    </li>
+                                </ul>
+                            </li> -->
+                            <li class="nav-item" *ngIf="_auth.isPro()">
+                                <ul class="radioStatus">
+                                    <li>
+                                        <input type="radio" name="selectStatus"  value="Online"
+                                        [checked]="selectStatus === 'Online'"
+                                        id="point1"
+                                        (change)="onStatusChange('Online')"/>
+                                        <label for="a25">Online</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="selectStatus"value="Booked"
+                                        [checked]="selectStatus === 'Booked'"
+                                        id="point1"
+                                        (change)="onStatusChange('Booked')" />
+                                        <label for="a50">Booked</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="selectStatus" value="Busy"
+                                        [checked]="selectStatus === 'Busy'"
+                                        id="point1"
+                                        (change)="onStatusChange('Busy')" />
+                                        <label for="a75">Busy</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="selectStatus"  value="Offline"
+                                        [checked]="selectStatus === 'Offline'"
+                                        id="point1"
+                                        (change)="onStatusChange('Offline')" />
                                         <label for="a100">Offline</label>
                                     </li>
                                 </ul>

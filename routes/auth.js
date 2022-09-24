@@ -7,6 +7,7 @@ const USERDATA = require('../model/userData');
 //jwt
 const { signAccessToken } = require('../helpers/jwt_helper')
 const { OTP_Mailer, Welcome_Mailer } = require('../controller/nodemailer')
+const { otpMailer } = require('../controller/sendGrid')
 const { generateOTP } = require('../helpers/otp-generator');
 const { authEmailJoi, authOTPJoi } = require('../helpers/validation_schema')
 
@@ -25,8 +26,8 @@ router.post('/signUp', async (req, res, next) => {
 
     try {
 
-        // let otp = generateOTP()
-        let otp = 123456;
+        let otp = generateOTP()
+        // let otp = 123456;
 
         const result = await authEmailJoi.validateAsync({ email: req.body.email }) //Joi Validation for incoming registeration details
 
@@ -48,8 +49,9 @@ router.post('/signUp', async (req, res, next) => {
         }
 
 
-        const sendOTP = await OTP_Mailer(req.body.email, otp)
-        console.log(sendOTP)
+        await otpMailer(req.body.email, otp)
+        // const sendOTP = await OTP_Mailer(req.body.email, otp)
+        // console.log(sendOTP)
 
 
         if (!doesExist) {

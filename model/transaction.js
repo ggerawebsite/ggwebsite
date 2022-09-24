@@ -6,7 +6,10 @@ const Schema = mongoose.Schema;
 
 const TransactionSchema = new Schema({
 
-    userId: String,
+    userId:  { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "userdata"
+     },
     type: String,
     amount: String,
     status: String,

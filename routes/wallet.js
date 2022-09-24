@@ -126,4 +126,13 @@ router.get('/balance/:id', async (req, res) => {
     }
 })
 
+router.get('/transactions/all', async (req, res) => {
+    try {
+        const userLists = await Transaction.find().populate("userId");
+        res.send(userLists)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 module.exports = router;

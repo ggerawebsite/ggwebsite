@@ -55,7 +55,10 @@
                             </div>
                             <div class="col-2" style="">
                                 <div class="mt-5 mb-5" style="text-align: center;background-color:#fc4e03;" >
-                                    <button type="button" class="btn"  style="padding: 20px;margin-top: 10px;" >{{lobby.status}}</button>
+                                    <button *ngIf="lobby.status != 'Started' " type="button" class="btn"  style="padding: 20px;margin-top: 10px;" (click)="changeLobbyStatus()"><p>{{lobby.status}}</p></button>
+                                    <button *ngIf="lobby.status == 'Started' " class="close" data-bs-dismiss="modal"
+                                    class="close" data-bs-dismiss="modal" data-bs-toggle="modal"
+                                    data-bs-target="#addTimings"  class="btn"  style="padding: 20px;margin-top: 10px;" ><p>{{lobby.status}}dd</p></button>
                                 </div>
                             </div>
 
@@ -214,6 +217,54 @@
                                                 <div class="select-box">
                                                     <input type="text" style="width: 100%;" class="form-control" style="color:white"
                                                     formControlName="link">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-center pt-5 pb-5">
+                                        <button type="submit" class="default-btn text-center">
+                                            Save and continue
+                                        </button>
+                                    </div>
+        
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ modal ends  -->
+<!-- modal starts here  -->
+<ng-container >
+    <div class="modal fade" id="addTimings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="container">
+                <div class="modal-content" style="padding: 0">
+                    <div class="modal-body" style="padding: 0; margin: 0">
+                        <div class="row">
+                            <form  #timingsForm = "ngForm" (ngSubmit) = "submitTimings(timingsForm.value)">
+                                <div class="col-lg-12 col-sm-10 col-md-10 card bg-black border">
+                                    <h1 class="p-2 text-center pt-5">
+                                        Add Timings
+                                    </h1>
+            
+                                    <div *ngFor="let l of lobby.members" class="d-flex flex-row justify-content-center">
+                                        <div class="col-lg-5 col-md-6 col-sm-12 p-2">
+                                            <div class="form-group">
+                                                <div class="select-box">
+                                                    <label class="select-box">
+                                                        {{l.id[0].username}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 col-md-6 col-sm-12 p-2">
+                                            <div class="form-group">
+                                                <div class="select-box">
+                                                    <input type="text" style="width: 100%;" class="form-control" style="color:white"
+                                                    name={{l.id[0]._id}} ngModel>
                                                 </div>
                                             </div>
                                         </div>

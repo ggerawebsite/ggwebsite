@@ -25,4 +25,10 @@ export class LobbyService {
   getLobbyWithMatchId(matchId: any) {
     return this.http.get<any>(`${this.server_address}/lobby/match-id/${matchId}`);
   }
+  changeLobbyStatus(lobby: string) {
+    return this.http.post<any>(`${this.server_address}/lobby/change/status`, { lobby: lobby });
+  }
+  addUserTimings(lobby: any, data) {
+    return this.http.post<any>(`${this.server_address}/lobby/add/timings`, { lobby: lobby, timings: data });
+  }
 }

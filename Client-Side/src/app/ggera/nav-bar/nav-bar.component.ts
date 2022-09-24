@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
 import { StoreService } from 'src/app/services/store.service';
 import { UserDetailedModel, UserModel, WalletModel } from 'src/app/common/interface/user.interface';
 import { WalletService } from 'src/app/services/wallet.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nav-bar',
@@ -22,6 +22,8 @@ export class NavBarComponent implements OnInit {
   wallet$:Observable<WalletModel>;
 
   games: any;
+  selectStatus: any;
+  user: any;
   selectedGame: FormControl = new FormControl('');
 
   constructor(
@@ -122,6 +124,8 @@ export class NavBarComponent implements OnInit {
         map((e) => e.data),
         tap((e: UserDetailedModel) => {
             this.store.currentUser = e;
+            this.user=e;
+            this.selectStatus=this.user.status;
             if(e?.preference?.selectedGame) this.selectedGame.setValue(e?.preference?.selectedGame);
             this.checkForValueChange();
             this.getWalletData(e._id);
@@ -154,4 +158,30 @@ export class NavBarComponent implements OnInit {
   subscriptions(){
     this.router.navigate(['/subscriptions'])
   }
+
+  onStatusChange(entry): void {
+    this.selectStatus = entry;
+    console.log(this.selectStatus);
+    console.log(this.user._id);
+    this._heroService.changeStatus(this.selectStatus, this.user._id)
+      .subscribe(
+        {
+          next: (res) => {
+            if (res) {
+
+              Swal.fire({
+                icon: 'success',
+                title: 'Updated successfully',
+                showConfirmButton: false,
+                timer: 1500
+              }).then(() => {
+                this.selectStatus = entry
+
+
+              })
+
+            }
+          }
+        })
+}
 }

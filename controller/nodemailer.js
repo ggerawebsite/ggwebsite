@@ -10,14 +10,25 @@ var transporter = nodemailer.createTransport({
     },
 });
 
+var transporter = nodemailer.createTransport({
+    host:'smtp.sendgrid.net',
+    port:587,
+    auth: {
+        user: 'apikey' ,
+        pass: process.env.SENDGRID_API_KEY,
+    },
+});
+
 
 const otp_mail = (email, otp) => {
 
 
+
     var mailOptions = {
+        from:'ggera.website@gmail.com',
         to: email,
         subject: "Otp for registration is: ",
-        html: "<h3>OTP for account verification is </h3>" + "<h1 style='font-weight:bold;'>" + otp + "</h1>" // html body
+        html: "<body style='background-color:#FFCA33; color:#0A0A0A; align-items: center;'>"+"<img  style='width:100px; height:100px; align-item:center' src='http://ggera.com/img/circle%20gry%20black%20gredient.png'>"+"<h3>HERE IS YOUR ONE TIME PASSWORD </h3>" + "<h1 style='font-weight:bold;'>" + otp + "</h1>"+"</body>" // html body
     };
     console.log(otp)
     return mailOptions

@@ -240,6 +240,9 @@ export class HeroService {
   updateProfile(profile: any, email: any) {
     return this.http.put<any>(`${this.server_address}/user`, { profile: profile, email: email });
   }
+  changeStatus(status: string, userId: string) {
+    return this.http.patch<any>(`${this.server_address}/user/change/status`, { status: status, userId: userId });
+  }
 
   //! Chat related 
 

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router()
 const USERDATA = require('../model/userData');
 const mongoose = require('mongoose');
+const sgMail = require('@sendgrid/mail');
+const { otpMailer } = require('../controller/sendGrid')
 
 /* multer start */
 const multer = require('multer');
@@ -160,6 +162,21 @@ router.post('/withdraw', verifyAccessToken, async (req, res) => {
         res.send({data: null, error: error.message})
     }
 });
+
+
+router.patch('/change/status', async (req, res) => {
+        // res.send({data: req.body})
+    try {
+        const cUser = await USERDATA.findById(req.body.userId);
+        cUser.status = req.body.status;
+        const data = await cUser.save();
+        res.send({data: data, error: null})
+    } catch (error) {
+        console.log(error)
+        res.send({data: null, error: error.message})
+    }
+})
+
 
 
 module.exports = router;

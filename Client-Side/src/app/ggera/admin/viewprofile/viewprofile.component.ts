@@ -41,14 +41,14 @@ selectedFile = null;
     'flawless': new FormControl(''),
     'pro_cost': new FormControl(''),
     'vip_cost': new FormControl(''),
-    'about': new FormControl('')
+    'about': new FormControl(''),
+    'createdAt': new FormControl('')
   })
   ngOnInit(): void {
     
       this.userData();
       this.getUserDATA();
-      console.log('user',this.user)
-    
+      console.log('user',this.user)    
   }
   getUserDATA() {
       var id=this.route.snapshot.paramMap.get('userid');
@@ -75,11 +75,11 @@ selectedFile = null;
           'flawless': res[0].flawless,
           'pro_cost': res[0].pro_cost,
           'vip_cost': res[0].vip_cost,
-          'about': res[0].about
+          'about': res[0].about,
+          'createdAt': res[0].createdAt
         })
-
+        console.log('user',this.ProfileForm.value.createdAt)  
       })
-      
 
   }
 

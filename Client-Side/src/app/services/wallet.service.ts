@@ -41,4 +41,7 @@ export class WalletService {
   getBalanceWithUserId( userId:any){
     return this.http.get<any>(`${this.server_address}/wallet/balance/${userId}`); 
   }
+  getAllTransactions(){
+    return this.http.get<any>(`${this.server_address}/wallet/transactions/all`); 
+  }
 }

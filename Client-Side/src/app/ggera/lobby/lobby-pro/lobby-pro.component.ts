@@ -162,4 +162,49 @@ export class LobbyProComponent implements OnInit {
     // console.log(this.data)
   }
   
+  changeLobbyStatus(){
+    if(this.user.gamerID == this.lobby.createdBy){
+      if(this.lobby.status =="Started"){
+        console.log("stop party")
+      }
+      console.log("hii");
+      console.log(this.lobby.status);
+      this._lobby.changeLobbyStatus(this.lobby._id)
+      .subscribe(res => {
+        // this.lobby = res.data
+        console.log(res.data)
+        Swal.fire({
+          icon: 'success',
+          title: 'Lobby Stopped Successfully',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.lobby.status= res.data.status
+          if(res.data.status =="Stopped"){
+            window.location.reload();
+          }
+
+        })
+      })
+    }
+  }
+  submitTimings(data){
+    console.log(data);
+    this._lobby.addUserTimings(this.lobby, data)
+      .subscribe(res => {
+        // this.lobby = res.data
+        console.log(res.data)
+        this.changeLobbyStatus()
+        // Swal.fire({
+        //   icon: 'success',
+        //   title: 'Updated successfully',
+        //   showConfirmButton: false,
+        //   timer: 1500
+        // }).then(() => {
+        //   // window.location.reload();
+        //   this.lobby.status= res.data.status
+
+        // })
+      })
+  }
 }
