@@ -143,6 +143,12 @@ export class HeroService {
   getParty() {
     return this.http.get<PartyModel[]>(`${this.server_address}/party`,);
   }
+  getAllParty() {
+    return this.http.get<PartyModel[]>(`${this.server_address}/party/all`,);
+  }
+  getAllPartyWithQuery(query) {
+    return this.http.get<PartyModel[]>(`${this.server_address}/party/all/query?${query}`);
+  }
 
   getPartyDetails(id: string) {
     return this.http.get<ApiResponse<PartyModel>>(`${this.server_address}/party/${id}/details`).pipe(map(e=>e.data));

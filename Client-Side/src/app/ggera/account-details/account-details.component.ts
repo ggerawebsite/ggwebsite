@@ -110,12 +110,19 @@ export class AccountDetailsComponent implements OnInit {
 
     async moneyAdd() {
         let data = this.AddMoneyForm.value;
-        data.userId = this.store.currentUserId;
-        await this.walletService.addMoney(data.amount, data.userId).subscribe();
+        // data.userId = this.store.currentUserId;
+        // await this.walletService.addMoney(data.amount, data.userId).subscribe();
         // window.location.reload();
-        console.log(data.amount);
+        // console.log(data.amount);
         this.walletService.addMoneyWithStripe(data.amount).subscribe((res) => {
             window.location.href = res.url;
+            this.addMoneyToUserBalance(res.url)
         });
+    }
+    async addMoneyToUserBalance(url){
+        let data = this.AddMoneyForm.value;
+        data.userId = this.store.currentUserId;
+        await this.walletService.addMoney(data.amount, data.userId).subscribe();
+        window.location.href = url;
     }
 }

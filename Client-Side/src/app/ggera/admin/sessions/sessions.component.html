@@ -1,18 +1,11 @@
-<ng-container *ngIf="withdrawRequest$ | async as withdrawRequest">
+<ng-container *ngIf="parties$ | async as withdrawRequest">
     <div class="row">
         <div class="col-12 p-5">
-            <h2>Transactions</h2>
+            <h2>Sessions</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
-            <select [(ngModel)]="userType" (change)="filterWithUser()">
-                <option value="all" selected="selected">All</option>
-                <option value="admin">Admin</option>
-                <option value="pro">Pro</option>
-            </select>
-        </div>
-        <div class="col-6">
+        <div class="col-12">
             <select [(ngModel)]="dateFilter" (change)="onDateFilterChange()">
                 <option value="all" selected="selected">All</option>
                 <option value="today">Today</option>
@@ -24,27 +17,22 @@
     </div>
     <table class="table table-dark  table-striped-columns">
         <thead>
-            <th>User</th>
-            <th>Transaction Type</th>
-            <th>Amount</th>
+            <th>Title</th>
+            <th>Url</th>
+            <th>Server</th>
             <th>Description</th>
+            <th>Status</th>
             <th>Time</th>
             <!-- <th>Action</th> -->
         </thead>
         <tbody>
             <tr *ngFor="let request of withdrawRequest">
-                <td>
-                    <p *ngIf="request.fromUserId">
-                        From :{{request.fromUserId?.username}}
-                    </p>
-                    <p *ngIf="request.toUserId">
-                        To :{{request.toUserId?.username}}
-                    </p>
-                </td>
-                <td>{{request.type}}</td>
-                <td>${{request.amount}}</td>
-                <td>{{request.desc}}</td>
-                <td>{{request.date}}</td>
+                <td>{{request.title}}</td>
+                <td>${{request.url}}</td>
+                <td>{{request.preferredServer}}</td>
+                <td>{{request.lobbyDescription}}</td>
+                <td>{{request.status}}</td>
+                <td>{{request.createdAt}}</td>
                 <!-- <td>
                     <ng-container *ngIf="!request.isApproved; else approved;">
                         <button class="btn btn-primary" >Approve</button>

@@ -88,7 +88,7 @@ export class HomePageNew1Component implements OnInit {
     reduceFundFromUser(walletData, partyData){
       // console.log(walletData, partyData)
         // this.addFundToAdmin(walletData, partyData);
-      this._walletService.reduceMoney(walletData.userId, 10).
+      this._walletService.reduceMoney(walletData.userId, 10,'reduceFundToJoinParty', 'User Joins party reduction').
       subscribe(res => {
         this.addFundToAdmin(walletData, partyData);
         // this.router.navigate([`/party/${partyData.partyId}/payment/success`])
@@ -98,15 +98,16 @@ export class HomePageNew1Component implements OnInit {
     addFundToAdmin(walletData, partyData){
       console.log("ddd");
       console.log(partyData);
-      this._walletService.addMoneyToAdmin(2, partyData).
+      this._walletService.addMoneyToAdmin(2, partyData, `User Joined Party : ${partyData.name}`).
       subscribe(res => {
         console.log(res.data)
-        this.addMoneyToPro(2,partyData)
+        this.addMoneyToPro(10,partyData)
         // this.router.navigate([`/party/${partyData.partyId}/payment/success`])
       })
     }
     addMoneyToPro(amount, partyData){
-      this._walletService.addMoney(amount,partyData.partyCreatedBy  ).
+      console.log(partyData);
+      this._walletService.addMoneyToPro(amount,partyData.partyCreatedBy,`User Joined Party : ${partyData.name}`).
       subscribe(res => {
         console.log(res.data)
         this.router.navigate([`/party/${partyData.partyId}/payment/success`])

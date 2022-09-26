@@ -264,4 +264,69 @@ router.get('/can-create', async (req, res) => {
   }
 });
 
+
+router.get('/all', async (req, res) => {
+  try {
+    const userLists = await PartyData.aggregate([
+      {
+        $match: {
+          // status: 'idle'
+        }
+      },
+      {
+        $lookup: {
+          "from": 'userdatas',
+          localField: 'members.id',
+          foreignField: '_id',
+          "as": 'users',
+          "pipeline": [{
+            $project: {
+              username: 1, profile_pic: 1, channel_name: 1, discord_id: 1, about: 1, elo: 1, kd: 1
+            }
+          }]
+        }
+      }
+    ]);
+    res.send(userLists);
+  } catch (error) {
+    console.log(error);
+  }
+});
+router.get('/all/query', async (req, res) => {
+  console.log(req.query)
+    let query={};
+
+  if(req.query.date == "today"){
+    var start = new Date();
+    start.setHours(0,0,0,0);
+
+    var end = new Date();
+    end.setHours(23,59,59,999);
+
+    query['createdAt']= {
+        $gte: start, $lt: end
+    };
+  }
+  if(req.query.date == "week"){
+    query['createdAt']= {
+        $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000)
+    };
+  }
+  if(req.query.date == "month"){
+    query['$and']=  [
+        { createdAt: { $gt: new Date(new Date().getFullYear(), new Date().getMonth())} },
+        { createdAt: { $lt: new Date(new Date().getFullYear(), new Date().getMonth()+1) } },
+      ];
+  } 
+  if(req.query.date == "year"){
+      query['$and']=  [
+          { createdAt: { $gt: new Date(new Date().getFullYear(), 0)} },
+          { createdAt: { $lt: new Date(new Date().getFullYear()+1, 0) } },
+        ];
+  }  
+
+    const userLists = await PartyData.find(query);
+    res.send(userLists);
+});
+
 module.exports = router;

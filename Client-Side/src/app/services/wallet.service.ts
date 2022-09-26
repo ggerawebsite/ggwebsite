@@ -18,9 +18,12 @@ export class WalletService {
   addMoney(amount: any,userId: any) {
     return this.http.post<any>(`${this.server_address}/wallet/add/money`, { userId: userId, amount: amount });
   }
+  addMoneyToPro(amount: any,userId: any, desc: string) {
+    return this.http.post<any>(`${this.server_address}/wallet/add/money/pro`, { userId: userId, amount: amount, desc: desc});
+  }
   
-  addMoneyToAdmin(amount: any, partyData: any) {
-    return this.http.post<any>(`${this.server_address}/wallet/add/money/admin`, { partyData: partyData, amount: amount });
+  addMoneyToAdmin(amount: any, partyData: any, desc: any) {
+    return this.http.post<any>(`${this.server_address}/wallet/add/money/admin`, { partyData: partyData, amount: amount, desc: desc });
   }
 
   addMoneyWithStripe(data:any){
@@ -35,13 +38,17 @@ export class WalletService {
     console.log(userId);
     return this.http.post<any>(`${this.server_address}/wallet/transactions/details`, { userId: userId });
   }
-  reduceMoney( userId:any, amount:any){
-    return this.http.post<any>(`${this.server_address}/wallet/reduce/money`, { userId: userId, amount: amount }); 
+  reduceMoney( userId:any, amount:any, type: any, desc: string){
+    return this.http.post<any>(`${this.server_address}/wallet/reduce/money`, { userId: userId, amount: amount, type: type, desc: desc }); 
   }
   getBalanceWithUserId( userId:any){
     return this.http.get<any>(`${this.server_address}/wallet/balance/${userId}`); 
   }
   getAllTransactions(){
     return this.http.get<any>(`${this.server_address}/wallet/transactions/all`); 
+  }
+  getAllTransactionsWithUserType(data:any){
+    // console.log(`${this.server_address}/wallet/transactions/query?${data}`);
+    return this.http.get<any>(`${this.server_address}/wallet/transactions/query?${data}`); 
   }
 }
